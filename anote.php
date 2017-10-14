@@ -98,13 +98,8 @@ class AlphaPDF extends FPDI
 
 
 function generatePDF($source, $output, $text, $image,$x1,$y1,$x2,$y2,$pageNo){
-//echo '###';
-//echo $x1; echo ',';
-//echo $y1; echo ',';
-//echo $x2; echo ',';
-//echo $y2;
-//$pdf = new FPDI('Portrait','mm',array(215.9,279.4));
-$pdf = new AlphaPDF('Portrait','mm',array(215.9,279.4));
+
+$pdf = new AlphaPDF('Portrait','mm','A4');
 
 //$pdf->AddPage();
 

@@ -10,13 +10,13 @@ require_once('tcpdf.php');
 //require_once('FPDI/src/autoload.php');
 require_once('fpdi/fpdi.php');
 
-$mm = 0.235185333;
-echo $x1 = $_POST['X1']*$mm; echo ',';
-echo $y1 = $_POST['Y1']*$mm; echo ',';
- $x2 = $_POST['X2']*$mm; 
+$scale = 0.235185333;
+echo $x1 = $_POST['X1']*$scale; echo ',';
+echo $y1 = $_POST['Y1']*$scale; echo ',';
+ $x2 = $_POST['X2']*$scale; 
 echo $x2 = $x2 - $x1; echo ',';
 
- $y2 = $_POST['Y2']*$mm;
+ $y2 = $_POST['Y2']*$scale;
  echo $y2 = $y2 -$y1; echo ',';
 
 echo $pageNo = $_POST['pageNo'];
@@ -142,58 +142,6 @@ echo 'Success !';
 
 generatePDF("test.pdf", "test.pdf", "Hello Shiv !", "rt.png",$x1,$y1,$x2,$y2,$pageNo);
 //generatePDF("test.pdf", "test.pdf", "Hello Shiv !", "rt.png",10,10,100,100,1);
-
-
-/*
-// just require TCPDF instead of FPDF
-//require_once('tcpdf.php');
-//require_once('fpdi.php');
-require_once('tcpdf.php');
-
-//require_once('FPDI/src/autoload.php');
-require_once('fpdi/fpdi.php');
-
-function generatePDF($source, $output, $text, $image) {
-
-
-
-//$pdf->AddPage();
-
-//Set the source PDF file
-$pdf = new FPDI('Portrait','mm',array(215.9,279.4));
-
-//$pdf->AddPage();
-
-//Set the source PDF file
- 
-$pages_count = $pdf->setSourceFile($source);
-
-
-//new code
-
-for($i = 1; $i <= $pages_count; $i++)
-{
-    $pdf->AddPage(); 
-
-    $tplIdx = $pdf->importPage($i);
-
-    $pdf->useTemplate($tplIdx, 0, 0); 
-    //$pdf->Image($image,0,0,50,50); // X start, Y start, X width, Y width in mm
-
-    $pdf->SetFont('','',20); 
-    $pdf->SetTextColor(255,0,0); 
-    $pdf->SetXY(25, 25); 
-    $pdf->Write(0, $text); 
-}
-
-
-$pdf->Output($output);
-
-echo 'Success !';
-}
-
-generatePDF("test.pdf", "export.pdf", "Hello Shiv !", "rt.png");//$pdf->AddPage();
-*/
 ?>
 
 
